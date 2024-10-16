@@ -1,0 +1,37 @@
+-->mongosh
+
+-->use myDatabase
+
+-->db.createCollection("student")
+
+-->db.student.insert([{name:"akanksha",rollno:2,class:"TYIT",gender:"F"},
+
+                       .............{name:"dipika",rollno:3,class:"TYIT",gender:"F"},
+
+                       .............{name:"vivek",rollno:5,class:"TYIT",gender:"M"}])
+
+-->db.student.find()
+
+-->db.student.findOne()
+
+-->db.student.updateOne({name:"boss"},{$set:{name:"soyam", gender:M"}})
+
+-->db.student.updateOne({name:"swet"},{$set:{"name:"shivangi", gender:"F"}})
+
+-->db.student.updateOne({name:"boss"},{$unset:{gender:M"}})
+
+-->db.student.remove({name:"boss"})
+
+-->db.student.find({rollno:{$gt:3})
+
+-->db.student.remove({})
+
+-->db.student.drop()
+
+ 
+
+-->show collections
+
+student
+
+-->db.student.drop()s

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery Animation and Chaining</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+        }
+
+        #animateBox {
+            width: 100px;
+            height: 100px;
+            background-color: #3498db;
+            position: relative;
+            margin: 20px;
+            line-height: 100px;
+            text-align: center;
+            color: white;
+        }
+
+        button {
+            padding: 10px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>jQuery Animation Effects and Chaining</h2>
+
+    <button id="startAnimation">Start Animation</button>
+    <button id="resetAnimation">Reset</button>
+
+    <div id="animateBox">Box</div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('#startAnimation').click(function () {
+                $('#animateBox')
+                    .animate({ width: '200px' }, 1000)
+                    .animate({ height: '200px' }, 1000)
+                    .animate({ left: '200px' }, 1000)
+                    .animate({ top: '100px' }, 1000)
+                    .css('background-color', '#2ecc71')
+                    .text('Animated');
+            });
+
+            $('#resetAnimation').click(function () {
+                $('#animateBox')
+                    .stop(true, true)
+                    .css({
+                        width: '100px',
+                        height: '100px',
+                        top: '0',
+                        left: '0',
+                        backgroundColor: '#3498db'
+                    })
+                    .text('Box');
+            });
+        });
+    </script>
+
+</body>
+
+</html>

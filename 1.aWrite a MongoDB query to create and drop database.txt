@@ -1,0 +1,19 @@
+-->mongosh
+
+-->use myDatabase
+
+-->db.createCollection("student")
+
+-->db.student.insert([{name:"Akanksha",rollno:2,class:"TYIT",gender:"F"},
+
+                       .............{name:"DIPIKA",rollno:3,class:"TYIT",gender:"F"},
+
+                       .............{name:"vivek",rollno:5,class:"TYIT",gender:"m"}])
+
+-->show collections
+
+student
+
+-->db.student.find()
+
+-->db.student.drop()

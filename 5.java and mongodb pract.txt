@@ -1,0 +1,79 @@
+Create a Maven project
+
+group-id: com.practical
+artifact-id: mongo-app
+
+Add the below lines in pom.xml
+
+<dependencies>
+		<!-- MongoDB Java Driver -->
+		<dependency>
+			<groupId>org.mongodb</groupId>
+			<artifactId>mongodb-driver-sync</artifactId>
+			<version>4.9.1</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.8.1</version>
+				<configuration>
+					<source>17</source> <!-- Use Java 17 or adjust accordingly -->
+					<target>17</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+Right click on src/main/java -> New -> Class file -> MongoDBApp.java
+
+
+import com.mongodb.ConnectionString;
+import com.mongodb.MongoClientSettings;
+import com.mongodb.client.MongoClient;
+import com.mongodb.client.MongoClients;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
+import org.bson.Document;
+
+import java.util.Arrays;
+
+public class MongoDBApp {
+
+    public static void main(String[] args) {
+    	
+        String uri = "mongodb://localhost:27017";
+
+        ConnectionString connectionString = new ConnectionString(uri);
+        MongoClientSettings settings = MongoClientSettings.builder()
+                .applyConnectionString(connectionString)
+                .build();
+
+        MongoClient mongoClient = MongoClients.create(settings);
+
+        MongoDatabase database = mongoClient.getDatabase("admin");  // Replace with your database name
+
+        MongoCollection<Document> collection = database.getCollection("users");  // Replace with your collection name
+
+        Document document = new Document("name", "John Doe")
+                .append("age", 29)
+                .append("skills", Arrays.asList("Java", "MongoDB", "Spring"));
+        collection.insertOne(document);
+        System.out.println("Document inserted successfully!");
+
+        Document foundDocument = collection.find(new Document("name", "John Doe")).first();
+        if (foundDocument != null) {
+            System.out.println("Found Document: " + foundDocument.toJson());
+        }
+
+        collection.deleteOne(new Document("name", "John Doe"));
+        System.out.println("Document deleted successfully!");
+
+        mongoClient.close();
+    }
+}
+
+Run the file and check the output in mongo shell

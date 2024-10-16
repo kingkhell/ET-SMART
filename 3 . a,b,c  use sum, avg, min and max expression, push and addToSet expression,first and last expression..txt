@@ -1,0 +1,33 @@
+-->mongosh
+
+-->use myDatabase
+
+-->db.createCollection("books")
+-->
+db.books.insert([[ Title: "MongoDb", price: 200, type: "ebook"},
+... Title: "Java", price: 290, type:"ebook"),
+... [ Title: "Web Design", price: 500, type: "Hardcover"),
+...[Title: "Android", price: 350, type: "online"},
+ [ Title: "DBMS", price: 450, type: "online"}])
+
+
+A
+-->db.books.aggregate([{$group:{id:"$Type", category: (Ssun:1}}}])
+-->db.books.aggregate([{$group: (id: "$type", category: {$sum:1}}}])
+-->db.books.aggregate([{$group: [_id: "$type", max_price: (Smax: "Sprice*}}}])
+-->db.books.aggregate([{$group: {_id: "$type", min price: (Smin: "Sprice"}}}])
+-->db.books.aggregate([{$group: [_id: "Stype", avg_price: {$avg: "$price*}}}]
+-->db.books.aggregate([{$group: [_id: "Stype", category:{$sum: "$price*}}}]
+db.books.updateOne((title: "Python"), ($addToSet: [unites:10}})
+-------------------------------------------------------------------------------------------
+B
+
+push and add
+--> db.books. insertone({title:"HTML", price: 985, type: "Hardcopy"})
+--> db.books.updateOne([title:"HTML"), (Spush: (publication:"techknowledge"}}
+------------------------------------------------------------------------------------------------
+C
+
+first and last
+-->db.books. insertone({title:"HTML", price: 985, type: "Hardcopy"})
+-->Akanksha: db.books.updateOne([title:"HTML"), (Spush: (publication:"techknowledge"}}

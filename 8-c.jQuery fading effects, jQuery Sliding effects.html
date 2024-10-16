@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery Fading and Sliding Effects</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+        }
+
+        .box {
+            width: 150px;
+            height: 150px;
+            margin: 20px;
+            display: inline-block;
+            text-align: center;
+            line-height: 150px;
+            color: white;
+            font-size: 18px;
+        }
+
+        #box1 {
+            background-color: #3498db;
+        }
+
+        #box2 {
+            background-color: #2ecc71;
+        }
+
+        button {
+            padding: 10px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>jQuery Fading and Sliding Effects</h2>
+
+    <button id="fadeOutBox1">Fade Out Box 1</button>
+    <button id="fadeInBox1">Fade In Box 1</button>
+
+    <button id="slideUpBox2">Slide Up Box 2</button>
+    <button id="slideDownBox2">Slide Down Box 2</button>
+
+    <div id="box1" class="box">Box 1</div>
+    <div id="box2" class="box">Box 2</div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('#fadeOutBox1').click(function () {
+                $('#box1').fadeOut();
+            });
+
+            $('#fadeInBox1').click(function () {
+                $('#box1').fadeIn();
+            });
+
+            $('#slideUpBox2').click(function () {
+                $('#box2').slideUp();
+            });
+
+            $('#slideDownBox2').click(function () {
+                $('#box2').slideDown();
+            });
+        });
+    </script>
+
+</body>
+
+</html>

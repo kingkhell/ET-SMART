@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial=" 1.0">
+    <title>JSON Operations</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+        }
+
+        button {
+            padding: 10px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #result {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Creating, Parsing, and Persisting JSON</h2>
+
+    <button id="createJson">Create JSON</button>
+    <button id="parseJson">Parse JSON</button>
+    <button id="persistJson">Persist JSON</button>
+    <button id="loadJson">Load JSON from Local Storage</button>
+
+    <div id="result"></div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            let jsonObject = null;
+
+            $('#createJson').click(function () {
+                jsonObject = {
+                    name: "Muthu Krishna",
+                    age: 30,
+                    email: "muthu.krishna@gmail.com",
+                    hobbies: ["reading", "traveling", "music"]
+                };
+                $('#result').html("JSON Created: <pre>" + JSON.stringify(jsonObject, null, 2) + "</pre>");
+            });
+
+            $('#parseJson').click(function () {
+                if (jsonObject) {
+                    let jsonString = JSON.stringify(jsonObject);
+                    let parsedObject = JSON.parse(jsonString);
+                    $('#result').html("Parsed JSON: <pre>" + JSON.stringify(parsedObject, null, 2) + "</pre>");
+                } else {
+                    $('#result').html("Please create JSON first.");
+                }
+            });
+
+            $('#persistJson').click(function () {
+                if (jsonObject) {
+                    localStorage.setItem('myJsonData', JSON.stringify(jsonObject));
+                    $('#result').html("JSON Persisted to Local Storage.");
+                } else {
+                    $('#result').html("Please create JSON first.");
+                }
+            });
+
+            $('#loadJson').click(function () {
+                let loadedJson = localStorage.getItem('myJsonData');
+                if (loadedJson) {
+                    let jsonFromStorage = JSON.parse(loadedJson);
+                    $('#result').html("Loaded JSON: <pre>" + JSON.stringify(jsonFromStorage, null, 2) + "</pre>");
+                } else {
+                    $('#result').html("No JSON found in Local Storage.");
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery Callbacks, Get and Set Contents</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+        }
+
+        #box {
+            width: 150px;
+            height: 150px;
+            background-color: #3498db;
+            margin: 20px;
+            color: white;
+            text-align: center;
+            line-height: 150px;
+            font-size: 20px;
+        }
+
+        button {
+            padding: 10px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #contentBox {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>jQuery Callback and Get/Set Contents</h2>
+
+    <button id="animateBox">Animate Box (with Callback)</button>
+    <button id="getContent">Get Box Content</button>
+    <button id="setContent">Set Box Content</button>
+
+    <div id="box">Box</div>
+
+    <div id="contentBox">Content will be displayed here...</div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('#animateBox').click(function () {
+                $('#box').animate({ width: '300px' }, 1000, function () {
+                    alert("Animation complete!");
+                });
+            });
+
+            $('#getContent').click(function () {
+                let content = $('#box').html();
+                $('#contentBox').html("The content of the box is: " + content);
+            });
+
+            $('#setContent').click(function () {
+                $('#box').html('New Content!');
+                $('#contentBox').html("Box content has been updated.");
+            });
+        });
+    </script>
+
+</body>
+
+</html>

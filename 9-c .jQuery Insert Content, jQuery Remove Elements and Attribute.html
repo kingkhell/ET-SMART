@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery Insert, Remove Elements and Attributes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+        }
+
+        .box {
+            width: 150px;
+            height: 150px;
+            background-color: #3498db;
+            margin: 20px;
+            color: white;
+            text-align: center;
+            line-height: 150px;
+            display: inline-block;
+        }
+
+        button {
+            padding: 10px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .container {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>jQuery Insert, Remove Elements and Attributes</h2>
+
+    <button id="insertBefore">Insert Before Box 1</button>
+    <button id="insertAfter">Insert After Box 2</button>
+    <button id="removeBox2">Remove Box 2</button>
+    <button id="removeAttrBox3">Remove Attribute from Box 3</button>
+
+    <div class="container">
+        <div id="box1" class="box" title="Box 1">Box 1</div>
+        <div id="box2" class="box" title="Box 2">Box 2</div>
+        <div id="box3" class="box" title="Box 3">Box 3</div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('#insertBefore').click(function () {
+                $('<div class="box" style="background-color:#e74c3c;">New Box Before</div>')
+                    .insertBefore('#box1');
+            });
+
+            $('#insertAfter').click(function () {
+                $('<div class="box" style="background-color:#f39c12;">New Box After</div>')
+                    .insertAfter('#box2');
+            });
+
+            $('#removeBox2').click(function () {
+                $('#box2').remove();
+            });
+            $('#removeAttrBox3').click(function () {
+                $('#box3').removeAttr('title');
+                $('#box3').text('Title attribute removed!');
+            });
+        });
+    </script>
+
+</body>
+
+</html>
